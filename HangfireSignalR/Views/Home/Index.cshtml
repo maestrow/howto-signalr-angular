@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutBase.cshtml";
+}
+@model HangfireSignalR.Models.TaskProperties
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("StartTask", "Home"))
+{
+  @Html.EditorFor(i => i.TaskName)
+  <input type="submit"/>
+}
