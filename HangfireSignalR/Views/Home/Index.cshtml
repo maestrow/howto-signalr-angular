@@ -17,10 +17,66 @@
     tasks.client.hello = function(name) {
       console.log(name);
     };
+
+    var Task = function(config) {
+      this.name = ko.observable(config.name);
+      this.progress = ko.observable(config.progress);
+
+      this.text = ko.pureComputed(function() {
+        return this.name() + ' : ' + this.progress() + '%';
+      }, this);
+    };
+
+    var ViewModel = function (taskList) {
+      this.tasks = taskList.map(function(t) {
+        return new Task(t);
+      });
+    };
+
+    var tasks = [
+    {
+      name: 'aaaa',
+      progress: 0
+    },
+    {
+      name: 'bbbb',
+      progress: 34
+    },
+    {
+      name: 'cccc',
+      progress: 76
+    },
+    {
+      name: 'eee',
+      progress: 33
+    }
+    ];
+
+    ko.applyBindings(new ViewModel(tasks));
   });
 </script>
 
 <h2>Index</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Progress</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody data-bind="foreach: tasks">
+    <tr>
+      <td data-bind="html: name"></td>
+      <td data-bind="html: progress"></td>
+      <td>
+        <button>Cancel</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 
