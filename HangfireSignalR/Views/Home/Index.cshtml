@@ -5,10 +5,27 @@
 }
 @model HangfireSignalR.Models.TaskProperties
 
+<script>
+  $(function() {
+    var onHubStarted = function() {
+      console.log('connection is established');
+    };
+
+    $.connection.hub.start().done();
+
+    var tasks = $.connection.tasksHub;
+    tasks.client.hello = function(name) {
+      console.log(name);
+    };
+  });
+</script>
+
 <h2>Index</h2>
 
-@using (Html.BeginForm("StartTask", "Home"))
+
+
+@using (Ajax.BeginForm("StartTask", new AjaxOptions() {}))
 {
-  @Html.EditorFor(i => i.TaskName)
+  @Html.EditorFor(i => i.Name)
   <input type="submit"/>
 }
