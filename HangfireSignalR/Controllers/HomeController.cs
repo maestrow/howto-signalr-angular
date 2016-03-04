@@ -16,14 +16,7 @@ namespace HangfireSignalR.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(new TaskProperties());
-        }
-
-        public ActionResult StartTask(TaskProperties model)
-        {
-            IHubConnectionContext<dynamic> clients = GlobalHost.ConnectionManager.GetHubContext<TasksHub>().Clients;
-            clients.All.hello(model.Name);
-            return View("Index", model);
+            return View();
         }
     }
 }

@@ -14,19 +14,13 @@ namespace HangfireSignalR.Tasks
             for (int i = 0; i <= 100; i++)
             {
                 if (token.IsCancellationRequested)
-                {
-                    if (progress != null)
-                        progress.Report(100);
                     token.ThrowIfCancellationRequested();
-                }
+                
                 if (progress != null)
                     progress.Report(i);
 
                 await Task.Delay(timeDelay / 100);
             }
-
-            if (progress != null)
-                progress.Report(100);
         }
     }
 }
