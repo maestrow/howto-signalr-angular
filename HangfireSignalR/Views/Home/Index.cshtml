@@ -5,54 +5,23 @@
 }
 @model HangfireSignalR.Models.TaskProperties
 
+@section scripts
+{
+  <script src="/js/controller.js"></script>
+}
+
 <script>
   $(function() {
     var onHubStarted = function() {
       console.log('connection is established');
     };
 
-    $.connection.hub.start().done();
+    $.connection.hub.start().done(onHubStarted);
 
     var tasks = $.connection.tasksHub;
     tasks.client.hello = function(name) {
       console.log(name);
     };
-
-    var Task = function(config) {
-      this.name = ko.observable(config.name);
-      this.progress = ko.observable(config.progress);
-
-      this.text = ko.pureComputed(function() {
-        return this.name() + ' : ' + this.progress() + '%';
-      }, this);
-    };
-
-    var ViewModel = function (taskList) {
-      this.tasks = taskList.map(function(t) {
-        return new Task(t);
-      });
-    };
-
-    var tasks = [
-    {
-      name: 'aaaa',
-      progress: 0
-    },
-    {
-      name: 'bbbb',
-      progress: 34
-    },
-    {
-      name: 'cccc',
-      progress: 76
-    },
-    {
-      name: 'eee',
-      progress: 33
-    }
-    ];
-
-    ko.applyBindings(new ViewModel(tasks));
   });
 </script>
 
@@ -66,10 +35,10 @@
       <th></th>
     </tr>
   </thead>
-  <tbody data-bind="foreach: tasks">
-    <tr>
-      <td data-bind="html: name"></td>
-      <td data-bind="html: progress"></td>
+  <tbody ng-controller="TaskListCtrl">
+    <tr ng-repeat="task in tasks">
+      <td>{{task.name}}</td>
+      <td>{{task.progress}}</td>
       <td>
         <button>Cancel</button>
       </td>
