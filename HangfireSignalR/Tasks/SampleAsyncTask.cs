@@ -9,7 +9,7 @@ namespace HangfireSignalR.Tasks
 {
     public static class SampleAsyncTask
     {
-        public static async Task StartCalculation(int timeDelay, CancellationToken token, IProgress<int> progress)
+        public static async Task StartCalculation(int timeDelay, int failAfter, CancellationToken token, IProgress<int> progress)
         {
             for (int i = 0; i <= 100; i++)
             {
@@ -18,6 +18,9 @@ namespace HangfireSignalR.Tasks
                 
                 if (progress != null)
                     progress.Report(i);
+
+                if (failAfter > 0 && i > failAfter)
+                    throw new Exception("task failed");
 
                 await Task.Delay(timeDelay / 100);
             }
