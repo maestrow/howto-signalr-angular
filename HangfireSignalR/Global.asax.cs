@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using HangfireSignalR.Json;
+using Microsoft.AspNet.SignalR;
+using Newtonsoft.Json;
 
 namespace HangfireSignalR
 {
@@ -13,6 +16,14 @@ namespace HangfireSignalR
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalHost.DependencyResolver.Register(typeof(JsonSerializer), getSerializer);
+        }
+
+        private JsonSerializer getSerializer()
+        {
+            var settings = new JsonSerializerSettings();
+            settings.ContractResolver = new SignalRContractResolver();
+            return JsonSerializer.Create(settings);            
         }
     }
 }

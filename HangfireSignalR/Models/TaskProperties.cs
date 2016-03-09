@@ -18,8 +18,9 @@ namespace HangfireSignalR.Models
 
         public string Id { get; set; }
         public string Name { get; set; }
-        public int Percent { get; set; }
-        
+        public int Progress { get; set; }
+        public TaskState State { get; set; }
+
         [JsonIgnore]
         public CancellationTokenSource CancelToken { get; set; }
     }

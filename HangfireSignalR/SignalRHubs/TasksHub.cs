@@ -13,6 +13,13 @@ namespace HangfireSignalR.SignalRHubs
 {
     public class TasksHub : Hub
     {
+        private static Dictionary<TaskStatus, TaskState> statusMapping = new Dictionary<TaskStatus, TaskState>()
+        {
+            {TaskStatus.RanToCompletion, TaskState.Completed},
+            {TaskStatus.Canceled, TaskState.Canceled},
+            {TaskStatus.Faulted, TaskState.Failed}
+        };
+
         private static ConcurrentDictionary<string, TaskProperties> _CurrentTasks;
         private ConcurrentDictionary<string, TaskProperties> CurrentTasks
         {
@@ -30,19 +37,24 @@ namespace HangfireSignalR.SignalRHubs
             return CurrentTasks.Values;
         }
 
-        public async Task<string> StartTask(string name, int delay)
+        public async Task<string> StartTask(string name, int delay, int failAfter)
         {
             var tokenSource = new CancellationTokenSource();
 
             string taskId = Guid.NewGuid().ToString();
 
-            CurrentTasks.TryAdd(taskId, new TaskProperties(taskId, name, tokenSource));
+            var item = new TaskProperties(taskId, name, tokenSource);
+            item.State = TaskState.Running;
+            CurrentTasks.TryAdd(taskId, item);
 
-            Clients.All.taskStarted(taskId);
+            Clients.All.taskStarted(item);
 
-            await SampleAsyncTask.StartCalculation(delay, tokenSource.Token, new Progress<int>(percent => onProgressChange(taskId, percent)));
-            
-            onTaskComplete(taskId);
+            var task = SampleAsyncTask.StartCalculation(delay, failAfter, tokenSource.Token, new Progress<int>(percent => onProgressChange(taskId, percent)));
+            // ReSharper disable CSharpWarnings::CS4014
+            task.ContinueWith(t => onTaskFinished(t, item), tokenSource.Token);
+            task.ContinueWith(t => onTaskFinished(t, item), TaskContinuationOptions.OnlyOnCanceled);
+            // ReSharper restore CSharpWarnings::CS4014
+            await task;
             return taskId;
         }
 
@@ -52,20 +64,18 @@ namespace HangfireSignalR.SignalRHubs
                 CurrentTasks[taskId].CancelToken.Cancel();
         }
 
-        private void onTaskComplete(string taskId)
-        {
-            TaskProperties value;
-            if (CurrentTasks.ContainsKey(taskId))
-                CurrentTasks.TryRemove(taskId, out value);
-            Clients.All.taskCompleted(taskId);
-        }
-
         private void onProgressChange(string taskId, int progress)
         {
             if (CurrentTasks.ContainsKey(taskId))
-                CurrentTasks[taskId].Percent = progress;
+                CurrentTasks[taskId].Progress = progress;
             Clients.All.progressChanged(taskId, progress);
         }
 
+        private void onTaskFinished(Task task, TaskProperties taskProps)
+        {
+            TaskState state = statusMapping[task.Status];
+            taskProps.State = state;
+            Clients.All.taskStateUpdated(taskProps.Id, state);
+        }
     }
 }

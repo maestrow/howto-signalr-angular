@@ -11,28 +11,38 @@
   <script src="/js/controller.js"></script>
 }
 
+<style>
+  .task-completed {
+    color: lightgray;
+  }
+</style>
+
 <h2>Index</h2>
 
 <div ng-controller="TaskListCtrl">
 
   Task name: <input type="text" ng-model="newTask.name" /><br/>
   Task dealy (sec): <input type="number" ng-model="newTask.delay" /><br/>
+  Fail after specified percent (0 to complete successfully): <input type="number" ng-model="newTask.failAfter" /><br/>
   <button ng-click="startTask(newTask)">Add</button>
-
+  
   <table>
     <thead>
       <tr>
         <th>Name</th>
         <th>Progress</th>
-        <th></th>
+        <th>State</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="task in tasks">
-        <td id="task-{{task.id}}">{{task.name}}</td>
-        <td>{{task.progress}}</td>
+        <td ng-class="{'task-completed': task.state != taskStateEnum.running }">{{task.name}}</td>
+        <td ng-class="{'task-completed': task.state != taskStateEnum.running }">{{task.progress}}</td>
         <td>
-          <button>Cancel</button>
+          <button ng-if="task.state == taskStateEnum.running" ng-click="cancel(task)">Cancel</button>
+          <div ng-if="task.state == taskStateEnum.completed">Completed</div>
+          <div ng-if="task.state == taskStateEnum.canceled">Canceled</div>
+          <div ng-if="task.state == taskStateEnum.failed">Failed</div>
         </td>
       </tr>
     </tbody>
