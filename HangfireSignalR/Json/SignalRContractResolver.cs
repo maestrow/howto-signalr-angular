@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Newtonsoft.Json.Serialization;
 
-namespace HangfireSignalR.Json
+namespace SignalRAngular.Json
 {
     //http://stackoverflow.com/questions/30005575/signalr-use-camel-case
     public class SignalRContractResolver : IContractResolver

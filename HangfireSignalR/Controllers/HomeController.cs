@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using HangfireSignalR.Models;
-using HangfireSignalR.SignalRHubs;
-using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
+﻿using System.Web.Mvc;
 
-namespace HangfireSignalR.Controllers
+namespace SignalRAngular.Controllers
 {
     public class HomeController : Controller
     {

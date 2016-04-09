@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using HangfireSignalR.Models;
-using HangfireSignalR.Tasks;
 using Microsoft.AspNet.SignalR;
+using SignalRAngular.Models;
+using SignalRAngular.Tasks;
 
-namespace HangfireSignalR.SignalRHubs
+namespace SignalRAngular.SignalRHubs
 {
     public class TasksHub : Hub
     {

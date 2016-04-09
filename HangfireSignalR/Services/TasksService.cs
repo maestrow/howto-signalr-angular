@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using HangfireSignalR.Models;
 
-namespace HangfireSignalR.Services
+namespace SignalRAngular.Services
 {
     public class TasksService
     {

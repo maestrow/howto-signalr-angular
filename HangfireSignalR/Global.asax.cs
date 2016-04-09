@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
-using HangfireSignalR.Json;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
+using SignalRAngular.Json;
 
-namespace HangfireSignalR
+namespace SignalRAngular
 {
     public class MvcApplication : System.Web.HttpApplication
     {

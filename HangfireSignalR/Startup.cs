@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Owin;
+using SignalRAngular;
 
-[assembly: OwinStartup(typeof(HangfireSignalR.Startup))]
-
-namespace HangfireSignalR
+[assembly: OwinStartup(typeof(Startup))]
+namespace SignalRAngular
 {
     public class Startup
     {
