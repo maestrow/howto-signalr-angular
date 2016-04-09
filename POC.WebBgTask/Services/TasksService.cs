@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SignalRAngular.Services
+namespace POC.WebBgTask.Services
 {
     public class TasksService
     {

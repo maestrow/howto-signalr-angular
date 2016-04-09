@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SignalRAngular.Tasks
+namespace POC.WebBgTask.Tasks
 {
     public static class SampleAsyncTask
     {

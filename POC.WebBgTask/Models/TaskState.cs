@@ -1,4 +1,4 @@
-﻿namespace SignalRAngular.Models
+﻿namespace POC.WebBgTask.Models
 {
     public enum TaskState
     {

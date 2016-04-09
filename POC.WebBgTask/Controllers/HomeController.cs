@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SignalRAngular.Controllers
+namespace POC.WebBgTask.Controllers
 {
     public class HomeController : Controller
     {

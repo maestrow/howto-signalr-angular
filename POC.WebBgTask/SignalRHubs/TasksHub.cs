@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
-using SignalRAngular.Models;
-using SignalRAngular.Tasks;
+using POC.WebBgTask.Models;
+using POC.WebBgTask.Tasks;
 
-namespace SignalRAngular.SignalRHubs
+namespace POC.WebBgTask.SignalRHubs
 {
     public class TasksHub : Hub
     {

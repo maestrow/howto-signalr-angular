@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
-using SignalRAngular;
+using POC.WebBgTask;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace SignalRAngular
+namespace POC.WebBgTask
 {
     public class Startup
     {

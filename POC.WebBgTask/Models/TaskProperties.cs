@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Newtonsoft.Json;
 
-namespace SignalRAngular.Models
+namespace POC.WebBgTask.Models
 {
     public class TaskProperties
     {

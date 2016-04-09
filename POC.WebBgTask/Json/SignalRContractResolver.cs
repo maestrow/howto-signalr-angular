@@ -3,7 +3,7 @@ using System.Reflection;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Newtonsoft.Json.Serialization;
 
-namespace SignalRAngular.Json
+namespace POC.WebBgTask.Json
 {
     //http://stackoverflow.com/questions/30005575/signalr-use-camel-case
     public class SignalRContractResolver : IContractResolver
