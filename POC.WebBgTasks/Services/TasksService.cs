@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace POC.WebBgTask.Services
+namespace POC.WebBgTasks.Services
 {
     public class TasksService
     {

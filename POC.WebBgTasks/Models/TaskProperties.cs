@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using Newtonsoft.Json;
 
-namespace POC.WebBgTask.Models
+namespace POC.WebBgTasks.Models
 {
     public class TaskProperties
     {

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace POC.WebBgTask.Tasks
+namespace POC.WebBgTasks.Tasks
 {
     public static class SampleAsyncTask
     {

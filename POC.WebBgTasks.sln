@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme.ru.md = readme.ru.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.WebBgTask", "POC.WebBgTask\POC.WebBgTask.csproj", "{27096D90-810B-4FAD-A0C7-30D4E059F911}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POC.WebBgTasks", "POC.WebBgTasks\POC.WebBgTasks.csproj", "{27096D90-810B-4FAD-A0C7-30D4E059F911}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace POC.WebBgTask.Models
+﻿namespace POC.WebBgTasks.Models
 {
     public enum TaskState
     {

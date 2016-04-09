@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace POC.WebBgTask.Controllers
+namespace POC.WebBgTasks.Controllers
 {
     public class HomeController : Controller
     {

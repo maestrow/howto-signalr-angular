@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
-using POC.WebBgTask;
+using POC.WebBgTasks;
 
 [assembly: OwinStartup(typeof(Startup))]
-namespace POC.WebBgTask
+namespace POC.WebBgTasks
 {
     public class Startup
     {

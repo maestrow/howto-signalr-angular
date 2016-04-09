@@ -2,9 +2,9 @@
 using System.Web.Routing;
 using Microsoft.AspNet.SignalR;
 using Newtonsoft.Json;
-using POC.WebBgTask.Json;
+using POC.WebBgTasks.Json;
 
-namespace POC.WebBgTask
+namespace POC.WebBgTasks
 {
     public class MvcApplication : System.Web.HttpApplication
     {
