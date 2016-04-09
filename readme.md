@@ -1,1 +1,1 @@
-﻿* [Readme на русском](readme.ru.md)
+﻿* [Readme in russian](readme.ru.md)
