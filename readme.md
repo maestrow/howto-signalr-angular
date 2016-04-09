@@ -1,1 +1,1 @@
-* [Readme на русском](readme.ru.md)
+п»ї* [Readme РЅР° СЂСѓСЃСЃРєРѕРј](readme.ru.md)
