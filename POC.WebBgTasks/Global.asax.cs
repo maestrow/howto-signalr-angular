@@ -6,7 +6,7 @@ using POC.WebBgTasks.Json;
 
 namespace POC.WebBgTasks
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class Global : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
@@ -19,7 +19,7 @@ namespace POC.WebBgTasks
         {
             var settings = new JsonSerializerSettings();
             settings.ContractResolver = new SignalRContractResolver();
-            return JsonSerializer.Create(settings);            
+            return JsonSerializer.Create(settings);
         }
     }
 }
